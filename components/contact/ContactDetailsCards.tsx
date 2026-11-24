@@ -17,7 +17,7 @@ export function ContactDetailsCards() {
     {
       title: "Call Us",
       line1: siteConfig.phoneDisplay,
-      line2: "Mon – Sat: 9 AM – 8 PM",
+      line2: siteConfig.phone2Display,
       href: `tel:${siteConfig.phone}`,
       icon: <PhoneIcon className="w-5 h-5 text-[#6E0D25]" />,
     },

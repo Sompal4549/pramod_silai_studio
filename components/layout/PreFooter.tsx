@@ -54,7 +54,7 @@ export function PreFooter() {
         <div className="md:mr-6 flex-shrink-0">
           {isContactPage ? (
             <a
-              href={`${siteConfig.whatsappUrl}?text=Hi%20Sajni%20Silai%20Studio,%20I%20have%20a%20design%20in%20mind`}
+              href={`${siteConfig.whatsappUrl}?text=Hi%20${encodeURIComponent(siteConfig.name)},%20I%20have%20a%20design%20in%20mind`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ECC880] via-[#F4D99B] to-[#D29E3C] hover:from-[#E2B96B] hover:to-[#C08C2B] text-[#4A0A19] font-bold text-xs sm:text-sm px-6 py-2 sm:py-2.5 rounded-full shadow-md hover:shadow-lg transition-transform hover:scale-105"

@@ -9,15 +9,17 @@ export function HomeHero() {
       id="home"
       className="relative w-full overflow-hidden bg-[#FAF3EC] border-b border-[#EADAC9] min-h-[340px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[460px] flex items-center"
     >
-      {/* Full-width background image with NO overlay */}
+      {/* Full-width background image with mobile readability overlay */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/assets/hero-banner.webp"
-          alt="Ladies Tailoring by Sah Stitching Studio"
+          alt="Ladies Tailoring by Pramod Ladies Tailor"
           fill
           priority
           className="object-cover object-right md:object-center"
         />
+        {/* Soft cream gradient overlay: ensures 100% crisp text visibility on mobile, smooth fade on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF3EC]/95 via-[#FAF3EC]/90 to-[#FAF3EC]/50 sm:from-[#FAF3EC]/95 sm:via-[#FAF3EC]/70 sm:to-transparent pointer-events-none" />
       </div>
 
       {/* Content Container */}
@@ -32,7 +34,7 @@ export function HomeHero() {
 
           {/* Main Headline */}
           <h1 className="font-serif-display font-bold text-[#6E0D25] text-3xl sm:text-4xl md:text-5xl lg:text-[52px] mt-2 tracking-tight leading-tight">
-            Sah Stitching Studio
+            Pramod Ladies Tailor
           </h1>
 
           {/* Subheading */}

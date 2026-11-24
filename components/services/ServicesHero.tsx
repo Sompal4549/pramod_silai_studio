@@ -6,15 +6,17 @@ import { ArrowRightIcon } from "@/components/ui/Icons";
 export function ServicesHero() {
   return (
     <section className="relative w-full overflow-hidden bg-[#FAF3EC] border-b border-[#EADAC9] min-h-[300px] sm:min-h-[340px] md:min-h-[380px] lg:min-h-[420px] flex items-center">
-      {/* Full-width pure background image (NO OVERLAY) */}
+      {/* Full-width background image with mobile readability overlay */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/assets/services-hero-banner.webp"
-          alt="Complete Ladies Tailoring Solutions by Sajni Silai Studio"
+          alt="Complete Ladies Tailoring Solutions by Pramod Ladies Tailor"
           fill
           priority
           className="object-cover object-right md:object-center"
         />
+        {/* Soft cream gradient overlay: ensures 100% crisp text visibility on mobile, smooth fade on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF3EC]/95 via-[#FAF3EC]/90 to-[#FAF3EC]/50 sm:from-[#FAF3EC]/95 sm:via-[#FAF3EC]/70 sm:to-transparent pointer-events-none" />
       </div>
 
       {/* Content Container */}

@@ -6,15 +6,17 @@ import { FloralDivider } from "@/components/ui/FloralDivider";
 export function AboutHero() {
   return (
     <section className="relative w-full overflow-hidden bg-[#FAF3EC] border-b border-[#EADAC9] min-h-[200px] sm:min-h-[220px] md:min-h-[240px] flex items-center">
-      {/* Background image of sewing needle & red embroidery (NO OVERLAY) */}
+      {/* Background image with mobile readability overlay */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/assets/about-hero-banner.webp"
-          alt="About Pramod Silai Studio"
+          alt="About Pramod Ladies Tailor"
           fill
           priority
           className="object-cover object-right md:object-center"
         />
+        {/* Soft cream gradient overlay: ensures 100% crisp text visibility on mobile, smooth fade on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF3EC]/95 via-[#FAF3EC]/90 to-[#FAF3EC]/50 sm:from-[#FAF3EC]/95 sm:via-[#FAF3EC]/70 sm:to-transparent pointer-events-none" />
       </div>
 
       {/* Content Container */}

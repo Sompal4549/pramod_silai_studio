@@ -15,14 +15,24 @@ export function TopBar() {
     <div className="bg-[#6E0D25] text-white text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 border-b border-[#54091A]">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2">
         {/* Left Contact Info */}
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
-          {/* Phone */}
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3.5">
+          {/* Phone 1 */}
           <a
             href={`tel:${siteConfig.phone}`}
             className="flex items-center gap-1.5 hover:text-amber-200 transition"
           >
             <PhoneIcon className="w-3.5 h-3.5 text-amber-200" />
             <span className="font-medium">{siteConfig.phoneDisplay}</span>
+          </a>
+
+          <span className="text-white/40">/</span>
+
+          {/* Phone 2 */}
+          <a
+            href={`tel:${siteConfig.phone2}`}
+            className="flex items-center gap-1.5 hover:text-amber-200 transition"
+          >
+            <span className="font-medium">{siteConfig.phone2Display}</span>
           </a>
 
           <span className="hidden sm:inline text-white/40">|</span>
@@ -35,7 +45,7 @@ export function TopBar() {
             className="flex items-center gap-1.5 hover:text-amber-200 transition"
           >
             <WhatsAppIcon className="w-3.5 h-3.5 text-amber-200" />
-            <span className="font-medium">{siteConfig.phoneDisplay}</span>
+            <span className="font-medium">WhatsApp</span>
           </a>
 
           <span className="hidden md:inline text-white/40">|</span>

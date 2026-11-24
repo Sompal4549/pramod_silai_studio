@@ -15,7 +15,7 @@ export function HomeAbout() {
               <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#EADAC9]">
                 <Image
                   src="/assets/about-sewing.jpg"
-                  alt="Parmod Sah Stitching Ladies Garment"
+                  alt="Pramod Sah Stitching Ladies Garment"
                   fill
                   className="object-cover"
                 />
@@ -34,13 +34,13 @@ export function HomeAbout() {
             {/* Middle Column: Text, Feature bullets, Know More */}
             <div className="md:col-span-5 flex flex-col justify-center text-left">
               <h2 className="font-serif-display font-extrabold text-xl sm:text-2xl text-[#6E0D25]">
-                About Sah Stitching Studio
+                About Pramod Ladies Tailor
               </h2>
 
               <FloralDivider className="my-1.5 self-start" />
 
               <p className="text-[#4E3F3B] text-xs sm:text-[13px] leading-relaxed mt-1">
-                With over 20 years of experience in ladies garment stitching, I, Parmod Sah, started my journey from my hometown Chapra, Bihar. Our aim is to provide perfect fitting, beautiful designs and professional stitching to every woman.
+                With over 20 years of experience in ladies garment stitching, I, Pramod Sah, started my journey from my hometown Chapra, Bihar. Our aim is to provide perfect fitting, beautiful designs and professional stitching to every woman.
               </p>
 
               {/* 4 Feature Points */}

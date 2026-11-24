@@ -57,7 +57,7 @@ export function WhyChooseUs({ className = "py-4 sm:py-6" }: { className?: string
             <div className="flex items-center justify-center gap-2">
               <span className="w-8 sm:w-16 h-[1.5px] bg-[#B37943]" />
               <h2 className="font-serif-display font-bold text-lg sm:text-xl md:text-2xl text-[#6E0D25]">
-                Why Choose Sajni Silai Studio?
+                Why Choose Pramod Ladies Tailor?
               </h2>
               <span className="w-8 sm:w-16 h-[1.5px] bg-[#B37943]" />
             </div>
