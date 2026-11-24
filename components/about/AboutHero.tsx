@@ -9,8 +9,8 @@ export function AboutHero() {
       {/* Background image of sewing needle & red embroidery (NO OVERLAY) */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/assets/about-hero-banner.jpg"
-          alt="About Sajni Silai Studio"
+          src="/assets/about-hero-banner.webp"
+          alt="About Pramod Silai Studio"
           fill
           priority
           className="object-cover object-right md:object-center"
