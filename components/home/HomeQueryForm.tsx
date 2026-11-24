@@ -15,6 +15,7 @@ interface HomeQueryFormProps {
 interface QueryFormData {
   name: string;
   mobile: string;
+  email: string;
   service: string;
   location: string;
   message: string;
@@ -25,9 +26,12 @@ export function HomeQueryForm({
   onServiceChange,
 }: HomeQueryFormProps) {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState<QueryFormData>({
     name: "",
     mobile: "",
+    email: "",
     service: selectedService || serviceOptions[0],
     location: siteConfig.city,
     message: "",
@@ -39,13 +43,44 @@ export function HomeQueryForm({
     }
   }, [selectedService]);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.mobile) {
-      alert("Please enter your Name and Mobile Number");
+    setErrorMessage("");
+
+    if (!formData.name.trim() || !formData.mobile.trim()) {
+      setErrorMessage("Please enter your Name and Mobile Number");
       return;
     }
-    setFormSubmitted(true);
+
+    if (!formData.email.trim() || !formData.email.includes("@")) {
+      setErrorMessage("Please enter a valid Email address to receive your confirmation");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit enquiry. Please try again.");
+      }
+
+      setFormSubmitted(true);
+    } catch (err: any) {
+      console.error("Enquiry submission failed:", err);
+      setErrorMessage(err.message || "Failed to send enquiry. Please contact us via WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -69,7 +104,7 @@ export function HomeQueryForm({
                 Have a Query?
               </h2>
               <p className="text-amber-100/90 text-xs sm:text-sm mt-1.5 leading-relaxed">
-                Send us your requirements on WhatsApp or fill the form below. We will get back to you soon!
+                Send us your requirements. An instant email will be sent to both you and our studio master!
               </p>
 
               <div className="mt-4">
@@ -109,7 +144,8 @@ export function HomeQueryForm({
                     Query Sent Successfully!
                   </h4>
                   <p className="text-xs text-[#5C4F4B]">
-                    Thank you, <span className="font-semibold">{formData.name}</span>! {siteConfig.founder} Stitching Studio will call you at{" "}
+                    Thank you, <span className="font-semibold">{formData.name}</span>! Confirmation has been sent to{" "}
+                    <span className="font-semibold text-[#6E0D25]">{formData.email}</span>. {siteConfig.founder} Silai Studio team will call you at{" "}
                     <span className="font-semibold">{formData.mobile}</span> shortly.
                   </p>
                   <button
@@ -118,6 +154,7 @@ export function HomeQueryForm({
                       setFormData({
                         name: "",
                         mobile: "",
+                        email: "",
                         service: serviceOptions[0],
                         location: siteConfig.city,
                         message: "",
@@ -130,6 +167,12 @@ export function HomeQueryForm({
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-2.5" suppressHydrationWarning>
+                  {errorMessage && (
+                    <div className="text-xs text-red-700 bg-red-50 border border-red-200 rounded-lg p-2.5">
+                      ⚠️ {errorMessage}
+                    </div>
+                  )}
+
                   {/* Row 1: Name and Phone */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <Input
@@ -148,7 +191,18 @@ export function HomeQueryForm({
                     />
                   </div>
 
-                  {/* Row 2: Select Service and Location */}
+                  {/* Row 2: Email Address (Required for Customer Confirmation) */}
+                  <div>
+                    <Input
+                      type="email"
+                      required
+                      placeholder="Email Address (to receive confirmation) *"
+                      value={formData.email}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                    />
+                  </div>
+
+                  {/* Row 3: Select Service and Location */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <Select
                       value={formData.service}
@@ -172,7 +226,7 @@ export function HomeQueryForm({
                     />
                   </div>
 
-                  {/* Row 3: Message Textarea */}
+                  {/* Row 4: Message Textarea */}
                   <Textarea
                     rows={2}
                     placeholder="Your Message... (cloth type, fitting preference, delivery date)"
@@ -181,14 +235,15 @@ export function HomeQueryForm({
                   />
 
                   {/* Submit Button */}
-                  <div className="flex justify-end">
+                  <div className="flex justify-end pt-1">
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-1.5 bg-[#6E0D25] hover:bg-[#52081B] text-white text-xs sm:text-sm font-semibold px-6 py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center gap-1.5 bg-[#6E0D25] hover:bg-[#52081B] disabled:opacity-60 text-white text-xs sm:text-sm font-semibold px-6 py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer"
                       suppressHydrationWarning
                     >
                       <PaperAirplaneIcon className="w-3.5 h-3.5" />
-                      <span>Send Query</span>
+                      <span>{isSubmitting ? "Sending..." : "Send Query"}</span>
                     </button>
                   </div>
                 </form>

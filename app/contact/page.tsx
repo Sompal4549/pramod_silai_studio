@@ -3,19 +3,26 @@ import type { Metadata } from "next";
 import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { ContactMapStudio } from "@/components/contact/ContactMapStudio";
+import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Pramod Ladies Tailor - Chapra, Bihar | Call 9939996464",
+  title: "Contact & Studio Location | Sajni Silai Studio - Chapra, Bihar",
   description:
-    "Get in touch with Pramod Ladies Tailor by Pramod Sah in Chapra, Bihar. Call +91 99399 96464 or +91 95703 57272, WhatsApp or visit our studio in Chapra.",
+    "Visit Sajni Silai Studio in Chapra, Bihar or submit your tailoring enquiry online. Quick call, WhatsApp booking, and doorstep fitting consultations.",
   alternates: {
-    canonical: "https://pramodladiestailor.in/contact",
+    canonical: `${siteConfig.siteUrl}/contact`,
   },
   openGraph: {
-    title: "Contact Us | Pramod Ladies Tailor Chapra, Bihar",
+    title: "Contact & Studio Location | Sajni Silai Studio",
     description:
-      "Have a stitching query or want to book an appointment? Contact Pramod Ladies Tailor at +91 99399 96464 or +91 95703 57272.",
-    url: "https://pramodladiestailor.in/contact",
+      "Get in touch with Parmod Sah Silai Studio in Chapra. Call +91 98765 43210 or chat on WhatsApp.",
+    url: `${siteConfig.siteUrl}/contact`,
+    images: [{ url: "/assets/contact-hero-banner.webp", width: 1200, height: 630, alt: "Contact Sajni Silai Studio" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Sajni Silai Studio",
+    description: "Get in touch with Master Tailor Parmod Sah in Chapra, Bihar.",
     images: ["/assets/contact-hero-banner.webp"],
   },
 };
@@ -23,7 +30,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* 1. Contact Hero Banner */}
+      {/* 1. Contact Hero Banner (Full Width, No Overlay) */}
       <ContactHero />
 
       {/* 2. Contact Details & Send Enquiry Form */}

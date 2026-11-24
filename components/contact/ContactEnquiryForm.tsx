@@ -8,20 +8,54 @@ import { siteConfig } from "@/data/siteConfig";
 
 export function ContactEnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
+    email: "",
     service: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.mobile) {
-      alert("Please fill in your Name and Mobile Number");
+    setErrorMessage("");
+
+    if (!formData.name.trim() || !formData.mobile.trim()) {
+      setErrorMessage("Please fill in your Name and Mobile Number");
       return;
     }
-    setSubmitted(true);
+
+    if (!formData.email.trim() || !formData.email.includes("@")) {
+      setErrorMessage("Please enter a valid Email address to receive your confirmation");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit enquiry. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error("Contact enquiry submission failed:", err);
+      setErrorMessage(err.message || "Failed to submit enquiry. Please try again or reach out on WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -39,7 +73,7 @@ export function ContactEnquiryForm() {
           Send Us an Enquiry
         </h3>
         <p className="text-amber-100/80 text-xs sm:text-sm mt-0.5">
-          Fill the form below and we&apos;ll get back to you shortly.
+          Fill the form below. Confirmation will be sent to both you and our studio!
         </p>
       </div>
 
@@ -52,12 +86,14 @@ export function ContactEnquiryForm() {
             Enquiry Received!
           </h4>
           <p className="text-xs text-[#5C4F4B]">
-            Thank you, <span className="font-semibold">{formData.name}</span>. {siteConfig.founder} Silai Studio team will call you at <span className="font-semibold">{formData.mobile}</span> soon.
+            Thank you, <span className="font-semibold">{formData.name}</span>. A confirmation email has been sent to{" "}
+            <span className="font-semibold text-[#6E0D25]">{formData.email}</span>. {siteConfig.founder} Silai Studio team will call you at{" "}
+            <span className="font-semibold">{formData.mobile}</span> soon.
           </p>
           <button
             onClick={() => {
               setSubmitted(false);
-              setFormData({ name: "", mobile: "", service: "", message: "" });
+              setFormData({ name: "", mobile: "", email: "", service: "", message: "" });
             }}
             className="text-xs text-[#6E0D25] underline font-semibold cursor-pointer pt-1"
           >
@@ -66,6 +102,12 @@ export function ContactEnquiryForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-3" suppressHydrationWarning>
+          {errorMessage && (
+            <div className="text-xs text-red-200 bg-red-950/60 border border-red-500/50 rounded-lg p-2.5">
+              ⚠️ {errorMessage}
+            </div>
+          )}
+
           {/* Row 1: Name and Mobile */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Input
@@ -84,7 +126,18 @@ export function ContactEnquiryForm() {
             />
           </div>
 
-          {/* Row 2: Select Service Dropdown */}
+          {/* Row 2: Email (Required to send customer confirmation) */}
+          <div>
+            <Input
+              type="email"
+              required
+              placeholder="Email Address (to receive confirmation) *"
+              value={formData.email}
+              onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+            />
+          </div>
+
+          {/* Row 3: Select Service Dropdown */}
           <Select
             value={formData.service}
             onChange={(e) => setFormData((prev) => ({ ...prev, service: e.target.value }))}
@@ -97,11 +150,11 @@ export function ContactEnquiryForm() {
             ))}
           </Select>
 
-          {/* Row 3: Message Textarea */}
+          {/* Row 4: Message Textarea */}
           <Textarea
             rows={3}
             required
-            placeholder="Your Message... *"
+            placeholder="Your Message... (measurements, cloth type, design ideas) *"
             value={formData.message}
             onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
           />
@@ -110,15 +163,16 @@ export function ContactEnquiryForm() {
           <div className="pt-1 flex flex-col items-center">
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 bg-[#52081B] hover:bg-[#3E0514] text-white border border-[#91203E] text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full shadow-md hover:shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
+              disabled={isSubmitting}
+              className="inline-flex items-center justify-center gap-2 bg-[#52081B] hover:bg-[#3E0514] disabled:opacity-60 text-white border border-[#91203E] text-xs sm:text-sm font-semibold px-8 py-2.5 rounded-full shadow-md hover:shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
               suppressHydrationWarning
             >
               <PaperAirplaneIcon className="w-3.5 h-3.5" />
-              <span>Send Enquiry</span>
+              <span>{isSubmitting ? "Sending..." : "Send Enquiry"}</span>
             </button>
             <p className="text-[11px] text-amber-100/70 mt-2 flex items-center gap-1">
               <span>🔒</span>
-              <span>Your information is safe with us.</span>
+              <span>Your enquiry & email are strictly confidential.</span>
             </p>
           </div>
         </form>

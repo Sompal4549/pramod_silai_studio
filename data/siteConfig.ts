@@ -3,6 +3,7 @@ export const siteConfig = {
   subtitle: "By Pramod Sah",
   founder: "Pramod Sah",
   experienceYears: "20+",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://pramodladiestailor.in",
   phone: "+919939996464",
   phoneDisplay: "+91 99399 96464",
   phone2: "+919570357272",
@@ -14,6 +15,10 @@ export const siteConfig = {
   state: "Bihar",
   pincode: "841301",
   address: "Chapra, Bihar – 841301",
+  geo: {
+    latitude: 25.7796,
+    longitude: 84.7499,
+  },
   hours: "Mon – Sat: 9:00 AM – 8:00 PM",
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=Chapra,+Bihar+841301&t=&z=14&ie=UTF8&iwloc=&output=embed",
