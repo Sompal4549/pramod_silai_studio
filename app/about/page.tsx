@@ -2,7 +2,6 @@ import React from "react";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutStory } from "@/components/about/AboutStory";
 import { AboutHighlights } from "@/components/about/AboutHighlights";
-import { AboutTeam } from "@/components/about/AboutTeam";
 
 export default function AboutPage() {
   return (
@@ -17,9 +16,6 @@ export default function AboutPage() {
           <AboutHighlights />
         </div>
       </section>
-
-      {/* 3. Our Team & Why Choose Us */}
-      <AboutTeam />
     </>
   );
 }
