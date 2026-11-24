@@ -10,20 +10,68 @@ export interface EnquiryPayload {
   message?: string;
 }
 
+export function getSmtpCredentials() {
+  const host = (
+    process.env.SMTP_HOST ||
+    process.env.NEXT_PUBLIC_SMTP_HOST ||
+    "smtp.gmail.com"
+  ).trim();
+
+  const rawPort =
+    process.env.SMTP_PORT ||
+    process.env.NEXT_PUBLIC_SMTP_PORT ||
+    "587";
+  const port = Number(rawPort) || 587;
+
+  const rawSecure =
+    process.env.SMTP_SECURE ||
+    process.env.NEXT_PUBLIC_SMTP_SECURE ||
+    "false";
+  const secure = rawSecure === "true" || port === 465;
+
+  const user = (
+    process.env.SMTP_USER ||
+    process.env.NEXT_PUBLIC_SMTP_USER ||
+    process.env.SMTP_FROM_EMAIL ||
+    process.env.NEXT_PUBLIC_SMTP_FROM_EMAIL ||
+    "psony6375@gmail.com"
+  ).trim();
+
+  const rawPass =
+    process.env.SMTP_PASS ||
+    process.env.NEXT_PUBLIC_SMTP_PASS ||
+    "";
+  const pass = rawPass.trim().replace(/^["']|["']$/g, "");
+
+  const adminEmail = (
+    process.env.ADMIN_EMAIL ||
+    process.env.NEXT_PUBLIC_ADMIN_EMAIL ||
+    user
+  ).trim();
+
+  const fromName =
+    process.env.SMTP_FROM_NAME ||
+    process.env.NEXT_PUBLIC_SMTP_FROM_NAME ||
+    siteConfig.name;
+
+  return {
+    host,
+    port,
+    secure,
+    user,
+    pass,
+    adminEmail,
+    fromName,
+    isConfigured: Boolean(user && pass),
+  };
+}
+
 export function isSmtpConfigured(): boolean {
-  return Boolean(
-    process.env.SMTP_HOST &&
-    process.env.SMTP_USER &&
-    process.env.SMTP_PASS
-  );
+  return getSmtpCredentials().isConfigured;
 }
 
 function getTransporter() {
-  const host = process.env.SMTP_HOST || "smtp.gmail.com";
-  const port = Number(process.env.SMTP_PORT) || 587;
-  const secure = process.env.SMTP_SECURE === "true" || port === 465;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+  const { host, port, secure, user, pass } = getSmtpCredentials();
 
   return nodemailer.createTransport({
     host,
@@ -40,19 +88,31 @@ function getTransporter() {
  * Sends both Admin notification and Customer confirmation emails.
  */
 export async function sendEnquiryEmails(data: EnquiryPayload) {
-  if (!isSmtpConfigured()) {
-    console.warn("[mail.ts] SMTP credentials are not configured in environment variables. Skipping real email dispatch.");
+  const creds = getSmtpCredentials();
+
+  if (!creds.isConfigured) {
+    const reason = !creds.pass
+      ? "SMTP_PASS (or NEXT_PUBLIC_SMTP_PASS) is missing or empty in Vercel. Please add it in Vercel Environment Variables."
+      : "SMTP_USER is missing.";
+    console.warn(`[mail.ts] ${reason}`);
+
     return {
       success: true,
       simulated: true,
-      message: "SMTP not configured, simulated success.",
+      message: `SMTP not configured: ${reason}`,
+      diagnostics: {
+        hasUser: Boolean(creds.user),
+        hasPass: Boolean(creds.pass),
+        host: creds.host,
+        port: creds.port,
+      },
     };
   }
 
   const transporter = getTransporter();
-  const fromName = process.env.SMTP_FROM_NAME || siteConfig.name;
-  const fromEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER;
-  const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
+  const fromName = creds.fromName;
+  const fromEmail = creds.user;
+  const adminEmail = creds.adminEmail;
 
   const now = new Date().toLocaleString("en-IN", {
     timeZone: "Asia/Kolkata",
@@ -228,7 +288,6 @@ export async function sendEnquiryEmails(data: EnquiryPayload) {
       });
     } catch (custErr) {
       console.error("[mail.ts] Failed to send customer confirmation email:", custErr);
-      // We don't fail the whole request if customer email fails, since admin got the alert
     }
   }
 

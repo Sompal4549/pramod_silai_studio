@@ -1,5 +1,28 @@
 import { NextResponse } from "next/server";
-import { sendEnquiryEmails, type EnquiryPayload } from "@/lib/mail";
+import { sendEnquiryEmails, getSmtpCredentials, type EnquiryPayload } from "@/lib/mail";
+
+/**
+ * Diagnostic GET endpoint: Visit /api/enquiry in browser to verify Vercel environment variables live!
+ */
+export async function GET() {
+  const creds = getSmtpCredentials();
+  return NextResponse.json({
+    status: creds.isConfigured ? "SMTP Ready" : "SMTP Missing Credentials",
+    isConfigured: creds.isConfigured,
+    checks: {
+      hasUser: Boolean(creds.user),
+      user: creds.user ? `${creds.user.slice(0, 3)}***@${creds.user.split("@")[1] || ""}` : null,
+      hasPass: Boolean(creds.pass),
+      passLength: creds.pass ? creds.pass.length : 0,
+      host: creds.host,
+      port: creds.port,
+      secure: creds.secure,
+    },
+    help: !creds.pass
+      ? "SMTP_PASS is empty in Vercel. In Vercel, when you edit a locked/secret variable, the Value field is cleared for security. You must re-paste your 16-digit Google App Password into the Value box and click Save."
+      : "SMTP is ready to send emails.",
+  });
+}
 
 export async function POST(request: Request) {
   try {
@@ -39,8 +62,8 @@ export async function POST(request: Request) {
     const result = await sendEnquiryEmails(payload);
 
     return NextResponse.json({
-      message: "Enquiry submitted successfully and confirmation emails dispatched.",
       ...result,
+      message: result.message || "Enquiry submitted successfully and confirmation emails dispatched.",
     });
   } catch (error: any) {
     console.error("[api/enquiry] Error processing enquiry submission:", error);
