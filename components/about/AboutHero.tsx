@@ -15,8 +15,8 @@ export function AboutHero() {
           priority
           className="object-cover object-right md:object-center"
         />
-        {/* Soft cream gradient overlay: ensures 100% crisp text visibility on mobile, smooth fade on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF3EC]/95 via-[#FAF3EC]/90 to-[#FAF3EC]/50 sm:from-[#FAF3EC]/95 sm:via-[#FAF3EC]/70 sm:to-transparent pointer-events-none" />
+        {/* Mobile-only overlay: visible on mobile phones for text readability, completely hidden on tablet and desktop */}
+        <div className="block sm:hidden absolute inset-0 bg-gradient-to-r from-[#FAF3EC]/95 via-[#FAF3EC]/85 to-[#FAF3EC]/60 pointer-events-none" />
       </div>
 
       {/* Content Container */}

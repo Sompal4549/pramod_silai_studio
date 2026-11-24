@@ -216,6 +216,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .visible {
+    visibility: visible;
+  }
   .absolute {
     position: absolute;
   }
@@ -828,8 +831,8 @@
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
-  .via-\[\#FAF3EC\]\/90 {
-    --tw-gradient-via: color-mix(in oklab, #FAF3EC 90%, transparent);
+  .via-\[\#FAF3EC\]\/85 {
+    --tw-gradient-via: color-mix(in oklab, #FAF3EC 85%, transparent);
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
@@ -841,8 +844,8 @@
     --tw-gradient-to: #F5EAD9;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
-  .to-\[\#FAF3EC\]\/50 {
-    --tw-gradient-to: color-mix(in oklab, #FAF3EC 50%, transparent);
+  .to-\[\#FAF3EC\]\/60 {
+    --tw-gradient-to: color-mix(in oklab, #FAF3EC 60%, transparent);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-\[\#FBF1E6\] {
@@ -1396,6 +1399,9 @@
     .sm\:mb-8 {
       margin-bottom: calc(var(--spacing) * 8);
     }
+    .sm\:hidden {
+      display: none;
+    }
     .sm\:inline {
       display: inline;
     }
@@ -1501,19 +1507,6 @@
     }
     .sm\:rounded-xl {
       border-radius: var(--radius-xl);
-    }
-    .sm\:from-\[\#FAF3EC\]\/95 {
-      --tw-gradient-from: color-mix(in oklab, #FAF3EC 95%, transparent);
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    }
-    .sm\:via-\[\#FAF3EC\]\/70 {
-      --tw-gradient-via: color-mix(in oklab, #FAF3EC 70%, transparent);
-      --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
-      --tw-gradient-stops: var(--tw-gradient-via-stops);
-    }
-    .sm\:to-transparent {
-      --tw-gradient-to: transparent;
-      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
     }
     .sm\:p-2 {
       padding: calc(var(--spacing) * 2);
