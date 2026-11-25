@@ -7,6 +7,7 @@ export interface TestimonialItem {
   name: string;
   location: string;
   avatar: string;
+  objectPosition?: string;
   comment: string;
   stars: number;
 }
@@ -15,21 +16,24 @@ const testimonials: TestimonialItem[] = [
   {
     name: "Neha Singh",
     location: "Chapra",
-    avatar: "/assets/avatar-neha.jpg",
+    avatar: "/assets/avatar-neha.webp",
+    objectPosition: "50% 34%",
     comment: "Very professional work and perfect fitting. Highly recommended!",
     stars: 5,
   },
   {
     name: "Pooja Kumari",
     location: "Chapra",
-    avatar: "/assets/avatar-pooja.jpg",
+    avatar: "/assets/avatar-pooja.webp",
+    objectPosition: "50% 15%",
     comment: "Amazing stitching and on-time delivery. Thank you, Sah Studio!",
     stars: 5,
   },
   {
     name: "Rita Devi",
     location: "Chapra",
-    avatar: "/assets/avatar-rita.jpg",
+    avatar: "/assets/avatar-rita.webp",
+    objectPosition: "58% 20%",
     comment: "Beautiful designs and great service. I am fully satisfied.",
     stars: 5,
   },
@@ -54,11 +58,13 @@ export function HomeTestimonials() {
               className="bg-white border border-[#E9D9C9] rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-2xs hover:shadow-sm transition flex items-center gap-3"
             >
               {/* Client Avatar */}
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#E0D0BE] flex-shrink-0">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-[#E0D0BE] flex-shrink-0">
                 <Image
                   src={item.avatar}
                   alt={item.name}
                   fill
+                  sizes="56px"
+                  style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
                   className="object-cover"
                 />
               </div>

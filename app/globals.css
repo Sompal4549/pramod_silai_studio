@@ -1427,6 +1427,9 @@
     .sm\:h-11 {
       height: calc(var(--spacing) * 11);
     }
+    .sm\:h-14 {
+      height: calc(var(--spacing) * 14);
+    }
     .sm\:h-24 {
       height: calc(var(--spacing) * 24);
     }
