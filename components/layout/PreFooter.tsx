@@ -24,15 +24,16 @@ export function PreFooter() {
     : `Get in touch today for the best stitching solutions in ${siteConfig.city}, ${siteConfig.state}.`;
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#500819] py-5 sm:py-7 mt-auto border-t-2 border-[#8C1B37]">
-      {/* Background Banner requested by user */}
+    <section className="relative w-full overflow-hidden py-8 sm:py-10 md:py-12 mt-auto">
+      {/* Background Banner - Full size edge-to-edge without background color */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src={bannerSrc}
           alt={headline}
           fill
           priority
-          className="object-cover md:object-fill"
+          sizes="100vw"
+          className="object-cover object-center w-full h-full"
         />
       </div>
 

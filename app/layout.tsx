@@ -16,15 +16,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "Sajni Silai Studio | Best Ladies Tailor in Chapra, Bihar",
+    default: "Pramod Ladies Tailor | Best Tailor in Chapra, Bihar",
     template: `%s | ${siteConfig.name}`,
   },
+  // 150 characters — ideal for Google search snippet (150-160 max)
   description:
-    "With 20+ years of master craftsmanship, Sajni Silai Studio by Parmod Sah offers expert ladies tailoring in Chapra, Bihar. Specializing in designer blouse, bridal lehenga, kurti, suit, palazzo, gown stitching & perfect alterations.",
+    "Pramod Ladies Tailor in Chapra, Bihar. 20+ years of expert stitching: designer blouses, bridal lehengas, kurtis, suits, gowns & custom alterations.",
   keywords: [
     "Ladies tailor in Chapra",
     "Best ladies tailor Chapra Bihar",
-    "Sajni Silai Studio",
+    "Pramod Ladies Tailor",
     "Parmod Sah tailor Chapra",
     "Blouse stitching Chapra",
     "Designer blouse tailor Chapra",
@@ -55,24 +56,26 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
-    title: "Sajni Silai Studio | Best Ladies Tailor in Chapra, Bihar",
+    title: "Pramod Ladies Tailor | Best Tailor in Chapra, Bihar",
+    // 118 characters — ideal for social previews (<125 chars mobile limit)
     description:
-      "Expert ladies tailoring with 20+ years of craftsmanship. Designer blouse, bridal lehenga, stylish kurti & suit stitching in Chapra, Bihar.",
+      "Expert ladies tailoring in Chapra, Bihar. Custom designer blouses, bridal lehengas, kurtis, suits & perfect fittings.",
     images: [
       {
-        url: "/assets/hero-banner.webp",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Complete Ladies Tailoring Solutions`,
+        type: "image/jpeg",
+        alt: `${siteConfig.name} - Best Ladies Tailor in Chapra, Bihar`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sajni Silai Studio | Best Ladies Tailor in Chapra, Bihar",
+    title: "Pramod Ladies Tailor | Best Tailor in Chapra",
     description:
-      "20+ years of excellence in custom ladies tailoring, bridal wear, designer blouses & suits in Chapra, Bihar.",
-    images: ["/assets/hero-banner.webp"],
+      "20+ years of bespoke ladies tailoring in Chapra, Bihar. Designer blouses, bridal lehengas, kurtis & suits.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -110,7 +113,7 @@ export default function RootLayout({
         name: siteConfig.name,
         alternateName: `${siteConfig.name} ${siteConfig.subtitle}`,
         description:
-          "Sajni Silai Studio by Parmod Sah offers expert ladies garment stitching, kurti, lehenga, blouse, palazzo, and custom bridal wear with 20+ years of experience in Chapra, Bihar.",
+          "Pramod Ladies Tailor by Parmod Sah offers expert ladies garment stitching, kurti, lehenga, blouse, palazzo, and custom bridal wear with 20+ years of experience in Chapra, Bihar.",
         url: siteConfig.siteUrl,
         telephone: siteConfig.phoneDisplay,
         email: siteConfig.email,
@@ -147,7 +150,7 @@ export default function RootLayout({
             closes: "20:00",
           },
         ],
-        image: `${siteConfig.siteUrl}/assets/logo.jpg`,
+        image: `${siteConfig.siteUrl}/og-image.jpg`,
         sameAs: [
           siteConfig.socials.facebook,
           siteConfig.socials.instagram,

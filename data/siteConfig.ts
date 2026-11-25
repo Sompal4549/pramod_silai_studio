@@ -1,9 +1,24 @@
+const getSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.startsWith("http")
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  return "https://pramodladiestailor.in";
+};
+
 export const siteConfig = {
   name: "Pramod Ladies Tailor",
   subtitle: "By Pramod Sah",
   founder: "Pramod Sah",
   experienceYears: "20+",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://pramodladiestailor.in",
+  siteUrl: getSiteUrl(),
   phone: "+919939996464",
   phoneDisplay: "+91 99399 96464",
   phone2: "+919570357272",

@@ -6,24 +6,24 @@ import { AboutHighlights } from "@/components/about/AboutHighlights";
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "About Us | 20+ Years Tailoring Legacy - Sajni Silai Studio",
+  title: "About Us | 20+ Years Tailoring Legacy - Pramod Ladies Tailor",
   description:
-    "Meet Master Tailor Parmod Sah and learn about Sajni Silai Studio's 20+ year legacy in bespoke ladies tailoring, bridal wear, and precision fitting in Chapra, Bihar.",
+    "Meet Master Tailor Parmod Sah & discover 20+ years of ladies tailoring excellence: bespoke bridal wear, designer blouses & perfect fitting in Chapra, Bihar.",
   alternates: {
     canonical: `${siteConfig.siteUrl}/about`,
   },
   openGraph: {
-    title: "About Sajni Silai Studio | 20+ Years Legacy in Chapra, Bihar",
+    title: "About Us | Pramod Ladies Tailor - Chapra, Bihar",
     description:
-      "Crafting elegance and perfect fits since 2004. Discover the story and master craftsmanship of Parmod Sah.",
+      "20+ years of master ladies tailoring legacy in Chapra, Bihar by Parmod Sah. Bespoke bridal wear & designer blouses.",
     url: `${siteConfig.siteUrl}/about`,
-    images: [{ url: "/assets/about-hero-banner.webp", width: 1200, height: 630, alt: "About Sajni Silai Studio" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "About Pramod Ladies Tailor" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Sajni Silai Studio",
-    description: "20+ years of trust & tailored excellence in Chapra, Bihar.",
-    images: ["/assets/about-hero-banner.webp"],
+    title: "About Us | Pramod Ladies Tailor",
+    description: "20+ years of trusted ladies tailoring excellence in Chapra, Bihar.",
+    images: ["/og-image.jpg"],
   },
 };
 
