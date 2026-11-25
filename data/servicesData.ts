@@ -3,6 +3,7 @@ export interface ServiceItem {
   title: string;
   subtitle: string;
   image: string;
+  objectPosition?: string;
   icon: string;
   featured?: boolean;
 }
@@ -12,7 +13,8 @@ export const allServices: ServiceItem[] = [
     id: "kurti-suit",
     title: "Kurti & Suit Stitching",
     subtitle: "Stylish & Comfortable",
-    image: "/assets/svc-kurti.jpg",
+    image: "/assets/svc-kurti.webp",
+    objectPosition: "50% 38%",
     icon: "/assets/icon-svc-kurti.png",
     featured: true,
   },
@@ -28,7 +30,8 @@ export const allServices: ServiceItem[] = [
     id: "blouse",
     title: "Blouse Stitching",
     subtitle: "Perfect Fit Always",
-    image: "/assets/svc-blouse.jpg",
+    image: "/assets/svc-blouse.webp",
+    objectPosition: "50% 18%",
     icon: "/assets/icon-svc-blouse.png",
     featured: true,
   },

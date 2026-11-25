@@ -29,6 +29,7 @@ export function ServicesGrid() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
