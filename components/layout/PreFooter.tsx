@@ -10,9 +10,12 @@ import { siteConfig } from "@/data/siteConfig";
 export function PreFooter() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
+  const isAboutPage = pathname === "/about";
 
   const bannerSrc = isContactPage
     ? "/assets/contact-cta-banner.webp"
+    : isAboutPage
+    ? "/assets/about-bottom-cta.webp"
     : "/assets/cta-ribbon-banner.webp";
 
   const headline = isContactPage
