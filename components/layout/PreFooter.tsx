@@ -6,11 +6,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRightIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig } from "@/data/siteConfig";
+import { getServiceBySlug } from "@/data/servicesData";
 
 export function PreFooter() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
   const isAboutPage = pathname === "/about";
+  const serviceMatch = pathname.startsWith("/services/")
+    ? getServiceBySlug(pathname.replace("/services/", ""))
+    : undefined;
 
   const bannerSrc = isContactPage
     ? "/assets/contact-cta-banner.webp"
@@ -24,6 +28,8 @@ export function PreFooter() {
 
   const subline = isContactPage
     ? "Send us a picture on WhatsApp and get a free consultation!"
+    : serviceMatch
+    ? `Get in touch today for the best ${serviceMatch.title.toLowerCase()} services in ${siteConfig.city}, ${siteConfig.state}.`
     : `Get in touch today for the best stitching solutions in ${siteConfig.city}, ${siteConfig.state}.`;
 
   return (

@@ -38,6 +38,7 @@ export function HomeServices({ selectedService, onSelectService }: HomeServicesP
                   alt={service.title}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  style={service.objectPosition ? { objectPosition: service.objectPosition } : undefined}
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -46,6 +47,16 @@ export function HomeServices({ selectedService, onSelectService }: HomeServicesP
               <h3 className="font-serif-display text-center text-[#6E0D25] font-semibold text-xs sm:text-[13px] leading-tight mt-2 min-h-[32px] flex items-center justify-center">
                 {service.title}
               </h3>
+
+              {/* View Service Details */}
+              <Link
+                href={`/services/${service.id}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-[10px] font-semibold text-[#7A6458] hover:text-[#6E0D25] hover:underline mt-0.5 inline-flex items-center gap-1"
+              >
+                <span>View Details</span>
+                <ArrowRightIcon className="w-2.5 h-2.5" />
+              </Link>
             </div>
           ))}
         </div>

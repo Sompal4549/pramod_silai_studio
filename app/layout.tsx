@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   // 150 characters — ideal for Google search snippet (150-160 max)
   description:
     "Pramod Ladies Tailor in Chapra, Bihar. 20+ years of expert stitching: designer blouses, bridal lehengas, kurtis, suits, gowns & custom alterations.",
+  applicationName: siteConfig.name,
+  category: "fashion",
   keywords: [
     "Ladies tailor in Chapra",
     "Best ladies tailor Chapra Bihar",
@@ -96,6 +98,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: "/assets/logo.jpg",
   },
 };
 
@@ -118,10 +121,28 @@ export default function RootLayout({
         telephone: siteConfig.phoneDisplay,
         email: siteConfig.email,
         priceRange: "₹₹",
+        currenciesAccepted: "INR",
+        paymentAccepted: "Cash, UPI",
+        hasMap: siteConfig.mapsDirectionsUrl,
         founder: {
           "@type": "Person",
           name: siteConfig.founder,
+          jobTitle: "Master Ladies Tailor",
         },
+        areaServed: [
+          { "@type": "City", name: "Chapra" },
+          { "@type": "AdministrativeArea", name: "Saran" },
+          { "@type": "State", name: "Bihar" },
+        ],
+        knowsAbout: [
+          "Blouse Stitching",
+          "Bridal Lehenga Stitching",
+          "Kurti & Suit Stitching",
+          "Anarkali Suits",
+          "Palazzo & Pants",
+          "Saree Fall & Pico",
+          "Ladies Garment Alterations",
+        ],
         address: {
           "@type": "PostalAddress",
           streetAddress: siteConfig.address,
@@ -151,6 +172,7 @@ export default function RootLayout({
           },
         ],
         image: `${siteConfig.siteUrl}/og-image.jpg`,
+        logo: `${siteConfig.siteUrl}/assets/logo.jpg`,
         sameAs: [
           siteConfig.socials.facebook,
           siteConfig.socials.instagram,
@@ -164,6 +186,29 @@ export default function RootLayout({
           bestRating: "5",
           worstRating: "1",
         },
+        review: [
+          {
+            "@type": "Review",
+            author: { "@type": "Person", name: "Neha Singh" },
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            reviewBody:
+              "Very professional work and perfect fitting. Highly recommended!",
+          },
+          {
+            "@type": "Review",
+            author: { "@type": "Person", name: "Pooja Kumari" },
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            reviewBody:
+              "Amazing stitching and on-time delivery. Thank you, Sah Studio!",
+          },
+          {
+            "@type": "Review",
+            author: { "@type": "Person", name: "Rita Devi" },
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            reviewBody:
+              "Beautiful designs and great service. I am fully satisfied.",
+          },
+        ],
       },
       {
         "@type": "WebSite",

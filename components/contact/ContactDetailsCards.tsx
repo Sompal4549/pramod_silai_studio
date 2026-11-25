@@ -68,9 +68,9 @@ export function ContactDetailsCards() {
               {item.icon}
             </div>
             <div className="min-w-0">
-              <h4 className="font-serif-display font-bold text-xs sm:text-sm text-[#2C2420] group-hover:text-[#6E0D25] transition-colors">
+              <h3 className="font-serif-display font-bold text-xs sm:text-sm text-[#2C2420] group-hover:text-[#6E0D25] transition-colors">
                 {item.title}
-              </h4>
+              </h3>
               <p className="text-xs sm:text-[13px] font-semibold text-[#6E0D25] mt-0.5 truncate">
                 {item.line1}
               </p>
@@ -84,9 +84,9 @@ export function ContactDetailsCards() {
 
       {/* Follow Us on Social Media */}
       <div className="mt-5 pt-3 border-t border-[#EBDCCF]/60 text-center sm:text-left">
-        <h5 className="font-serif-display font-semibold text-xs sm:text-sm text-[#4E3F3B] mb-2.5">
+        <h3 className="font-serif-display font-semibold text-xs sm:text-sm text-[#4E3F3B] mb-2.5">
           Follow Us on Social Media
-        </h5>
+        </h3>
         <div className="flex items-center justify-center sm:justify-start gap-2.5">
           {socialLinks.map((social) => (
             <a

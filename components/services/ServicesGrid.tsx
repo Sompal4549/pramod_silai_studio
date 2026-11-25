@@ -23,19 +23,23 @@ export function ServicesGrid() {
               className="group bg-gradient-to-b from-[#FFFDFB] to-[#FBF1E6] border border-[#E9D9C9] rounded-xl sm:rounded-2xl p-2.5 sm:p-3 flex flex-col shadow-2xs hover:shadow-md hover:border-[#D9BD9E] transition-all duration-200 hover:-translate-y-0.5"
             >
               {/* Clean Cropped Photo Container */}
-              <div className="relative w-full aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden bg-[#EFE4D7] border border-[#ECE0D3]">
+              <Link
+                href={`/services/${item.id}`}
+                className="relative w-full aspect-[4/3] rounded-lg sm:rounded-xl overflow-hidden bg-[#EFE4D7] border border-[#ECE0D3] block"
+              >
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-              </div>
+              </Link>
 
               {/* Card Bottom Meta */}
               <div className="flex items-center justify-between gap-2 mt-2.5 pt-1">
-                <div className="flex items-center gap-2 min-w-0">
+                <Link href={`/services/${item.id}`} className="flex items-center gap-2 min-w-0">
                   <div className="relative w-5 h-6 flex-shrink-0">
                     <Image
                       src={item.icon}
@@ -52,12 +56,12 @@ export function ServicesGrid() {
                       {item.subtitle}
                     </p>
                   </div>
-                </div>
+                </Link>
 
                 <Link
-                  href="/contact"
+                  href={`/services/${item.id}`}
                   className="w-6 h-6 rounded-full bg-[#6E0D25] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#52081B] group-hover:scale-110 transition shadow-2xs"
-                  aria-label={`Inquire about ${item.title}`}
+                  aria-label={`View details about ${item.title}`}
                 >
                   <ArrowRightIcon className="w-3 h-3 text-white" />
                 </Link>
