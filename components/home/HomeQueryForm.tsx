@@ -37,11 +37,7 @@ export function HomeQueryForm({
     message: "",
   });
 
-  React.useEffect(() => {
-    if (selectedService) {
-      setFormData((prev) => ({ ...prev, service: selectedService }));
-    }
-  }, [selectedService]);
+  const activeService = selectedService || formData.service;
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,7 +61,7 @@ export function HomeQueryForm({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, service: activeService }),
       });
 
       const data = await response.json();
@@ -75,9 +71,13 @@ export function HomeQueryForm({
       }
 
       setFormSubmitted(true);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Enquiry submission failed:", err);
-      setErrorMessage(err.message || "Failed to send enquiry. Please contact us via WhatsApp.");
+      const message =
+        err instanceof Error
+          ? err.message
+          : "Failed to send enquiry. Please contact us via WhatsApp.";
+      setErrorMessage(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -140,9 +140,9 @@ export function HomeQueryForm({
                   <div className="w-12 h-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto">
                     <CheckmarkIcon className="w-6 h-6 text-green-700" />
                   </div>
-                  <h4 className="font-serif-display font-bold text-lg text-[#6E0D25]">
+                  <h3 className="font-serif-display font-bold text-lg text-[#6E0D25]">
                     Query Sent Successfully!
-                  </h4>
+                  </h3>
                   <p className="text-xs text-[#5C4F4B]">
                     Thank you, <span className="font-semibold">{formData.name}</span>! Confirmation has been sent to{" "}
                     <span className="font-semibold text-[#6E0D25]">{formData.email}</span>. {siteConfig.founder} Silai Studio team will call you at{" "}
@@ -205,7 +205,8 @@ export function HomeQueryForm({
                   {/* Row 3: Select Service and Location */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <Select
-                      value={formData.service}
+                      aria-label="Select tailoring service"
+                      value={activeService}
                       onChange={(e) => {
                         const val = e.target.value;
                         setFormData((prev) => ({ ...prev, service: val }));

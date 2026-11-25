@@ -26,12 +26,21 @@ export async function generateMetadata({
   const pageUrl = `${siteConfig.siteUrl}/services/${service.id}`;
 
   return {
-    title: `${service.title} in ${siteConfig.city}, ${siteConfig.state}`,
+    title: `${service.title} in ${siteConfig.city}`,
     description: service.seoDescription,
+    keywords: [
+      `${service.title} in ${siteConfig.city}`,
+      `${service.title} ${siteConfig.state}`,
+      siteConfig.name,
+      "Ladies tailor Chapra",
+    ],
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
+      type: "website",
+      locale: "en_IN",
+      siteName: siteConfig.name,
       title: `${service.title} | ${siteConfig.name}`,
       description: service.seoDescription,
       url: pageUrl,

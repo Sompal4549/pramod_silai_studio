@@ -36,12 +36,10 @@ export function ServicesHero() {
           {/* Main Headline */}
           <h1 className="font-serif-display font-extrabold text-[#6E0D25] text-3xl sm:text-4xl md:text-5xl lg:text-[52px] mt-2 tracking-tight leading-tight">
             Complete Ladies
+            <span className="block italic font-semibold text-2xl sm:text-3xl md:text-4xl mt-0.5">
+              Tailoring Solutions
+            </span>
           </h1>
-
-          {/* Subheading */}
-          <h2 className="font-serif-display italic text-[#6E0D25] text-2xl sm:text-3xl md:text-4xl font-semibold mt-0.5">
-            Tailoring Solutions
-          </h2>
 
           {/* Description */}
           <p className="text-[#4E3F3B] text-xs sm:text-sm md:text-base leading-relaxed max-w-sm sm:max-w-md mt-2">
