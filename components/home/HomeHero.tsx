@@ -22,7 +22,6 @@ export function HomeHero() {
         <div className="block sm:hidden absolute inset-0 bg-gradient-to-r from-[#FAF3EC]/95 via-[#FAF3EC]/85 to-[#FAF3EC]/60 pointer-events-none" />
       </div>
 
-      {/* Content Container */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-8 sm:py-10">
         <div className="max-w-xl flex flex-col justify-center">
           {/* Experience Badge */}
