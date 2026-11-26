@@ -37,11 +37,8 @@ export const siteConfig = {
     "https://maps.google.com/maps?q=Chapra,+Bihar+841301&t=&z=14&ie=UTF8&iwloc=&output=embed",
   mapsDirectionsUrl: "https://maps.google.com/?q=Chapra,+Bihar",
   socials: {
-    facebook: "https://facebook.com",
+    whatsapp: "https://wa.me/919939996464",
     instagram: "https://instagram.com",
-    youtube: "https://youtube.com",
-    pinterest: "https://pinterest.com",
-    linkedin: "https://linkedin.com",
   },
   navLinks: [
     { label: "Home", href: "/" },

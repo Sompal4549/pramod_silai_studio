@@ -177,10 +177,8 @@ export default function RootLayout({
         image: `${siteConfig.siteUrl}/og-image.jpg`,
         logo: `${siteConfig.siteUrl}/assets/logo.jpg`,
         sameAs: [
-          siteConfig.socials.facebook,
           siteConfig.socials.instagram,
-          siteConfig.socials.youtube,
-          siteConfig.socials.pinterest,
+          siteConfig.whatsappUrl,
         ],
         aggregateRating: {
           "@type": "AggregateRating",

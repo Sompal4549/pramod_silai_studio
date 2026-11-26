@@ -3,10 +3,8 @@ import {
   PhoneIcon,
   WhatsAppIcon,
   MapPinIcon,
-  FacebookIcon,
   InstagramIcon,
-  YouTubeIcon,
-  PinterestIcon,
+  MailIcon,
 } from "@/components/ui/Icons";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -59,16 +57,16 @@ export function TopBar() {
 
         {/* Right Social Links */}
         <div className="flex items-center gap-2">
-          <span className="text-white/80 hidden sm:inline text-[11px]">Follow Us :</span>
+          <span className="text-white/80 hidden sm:inline text-[11px]">Connect :</span>
           <div className="flex items-center gap-1.5">
             <a
-              href={siteConfig.socials.facebook}
+              href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noreferrer"
               className="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
-              aria-label="Facebook"
+              aria-label="WhatsApp"
             >
-              <FacebookIcon className="w-3 h-3 text-white" />
+              <WhatsAppIcon className="w-3 h-3 text-white" />
             </a>
             <a
               href={siteConfig.socials.instagram}
@@ -80,22 +78,11 @@ export function TopBar() {
               <InstagramIcon className="w-3 h-3 text-white" />
             </a>
             <a
-              href={siteConfig.socials.youtube}
-              target="_blank"
-              rel="noreferrer"
+              href={`mailto:${siteConfig.email}`}
               className="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
-              aria-label="YouTube"
+              aria-label="Email"
             >
-              <YouTubeIcon className="w-3 h-3 text-white" />
-            </a>
-            <a
-              href={siteConfig.socials.pinterest}
-              target="_blank"
-              rel="noreferrer"
-              className="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
-              aria-label="Pinterest"
-            >
-              <PinterestIcon className="w-3 h-3 text-white" />
+              <MailIcon className="w-3 h-3 text-white" />
             </a>
           </div>
         </div>

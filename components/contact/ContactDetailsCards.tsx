@@ -4,11 +4,7 @@ import {
   WhatsAppIcon,
   MapPinIcon,
   MailIcon,
-  FacebookIcon,
   InstagramIcon,
-  YouTubeIcon,
-  PinterestIcon,
-  LinkedInIcon,
 } from "@/components/ui/Icons";
 import { siteConfig } from "@/data/siteConfig";
 
@@ -45,11 +41,9 @@ export function ContactDetailsCards() {
   ];
 
   const socialLinks = [
-    { name: "Facebook", href: siteConfig.socials.facebook, icon: <FacebookIcon className="w-3.5 h-3.5" /> },
+    { name: "WhatsApp", href: siteConfig.whatsappUrl, icon: <WhatsAppIcon className="w-3.5 h-3.5" /> },
     { name: "Instagram", href: siteConfig.socials.instagram, icon: <InstagramIcon className="w-3.5 h-3.5" /> },
-    { name: "YouTube", href: siteConfig.socials.youtube, icon: <YouTubeIcon className="w-3.5 h-3.5" /> },
-    { name: "Pinterest", href: siteConfig.socials.pinterest, icon: <PinterestIcon className="w-3.5 h-3.5" /> },
-    { name: "LinkedIn", href: siteConfig.socials.linkedin, icon: <LinkedInIcon className="w-3.5 h-3.5" /> },
+    { name: "Email", href: `mailto:${siteConfig.email}`, icon: <MailIcon className="w-3.5 h-3.5" /> },
   ];
 
   return (
@@ -92,8 +86,8 @@ export function ContactDetailsCards() {
             <a
               key={social.name}
               href={social.href}
-              target="_blank"
-              rel="noreferrer"
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel={social.href.startsWith("http") ? "noreferrer" : undefined}
               aria-label={social.name}
               className="w-8 h-8 rounded-full bg-[#6E0D25] text-white flex items-center justify-center hover:bg-[#52081B] hover:scale-110 transition shadow-2xs"
             >

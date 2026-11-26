@@ -1,5 +1,5 @@
 import React from "react";
-import { FacebookIcon, InstagramIcon, YouTubeIcon, PinterestIcon } from "@/components/ui/Icons";
+import { WhatsAppIcon, InstagramIcon, MailIcon } from "@/components/ui/Icons";
 import { siteConfig } from "@/data/siteConfig";
 
 export function Footer() {
@@ -25,19 +25,19 @@ export function Footer() {
           Designed with <span className="text-red-400">❤</span> for our customers
         </div>
 
-        {/* Social Links */}
+        {/* Connect Links: WhatsApp, Instagram & Email */}
         <div className="hidden sm:inline text-amber-200/50">|</div>
         <div className="flex items-center gap-2">
-          <span>Follow Us:</span>
+          <span>Connect:</span>
           <div className="flex items-center gap-1.5">
             <a
-              href={siteConfig.socials.facebook}
+              href={siteConfig.whatsappUrl}
               target="_blank"
               rel="noreferrer"
               className="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
-              aria-label="Facebook"
+              aria-label="WhatsApp"
             >
-              <FacebookIcon className="w-3 h-3 text-white" />
+              <WhatsAppIcon className="w-3 h-3 text-white" />
             </a>
             <a
               href={siteConfig.socials.instagram}
@@ -49,22 +49,11 @@ export function Footer() {
               <InstagramIcon className="w-3 h-3 text-white" />
             </a>
             <a
-              href={siteConfig.socials.youtube}
-              target="_blank"
-              rel="noreferrer"
+              href={`mailto:${siteConfig.email}`}
               className="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
-              aria-label="YouTube"
+              aria-label="Email"
             >
-              <YouTubeIcon className="w-3 h-3 text-white" />
-            </a>
-            <a
-              href={siteConfig.socials.pinterest}
-              target="_blank"
-              rel="noreferrer"
-              className="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
-              aria-label="Pinterest"
-            >
-              <PinterestIcon className="w-3 h-3 text-white" />
+              <MailIcon className="w-3 h-3 text-white" />
             </a>
           </div>
         </div>
