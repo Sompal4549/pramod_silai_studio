@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { TopBar } from "@/components/layout/TopBar";
 import { Navbar } from "@/components/layout/Navbar";
@@ -6,6 +7,8 @@ import { PreFooter } from "@/components/layout/PreFooter";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { siteConfig } from "@/data/siteConfig";
+
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
 
 export const viewport: Viewport = {
   themeColor: "#6E0D25",
@@ -253,6 +256,22 @@ export default function RootLayout({
         <PreFooter />
         <Footer />
         <FloatingWhatsApp />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaMeasurementId}');
+            `,
+          }}
+        />
       </body>
     </html>
   );
