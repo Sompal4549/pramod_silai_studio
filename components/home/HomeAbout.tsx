@@ -10,24 +10,17 @@ export function HomeAbout() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="bg-[#FFFDFB] border border-[#E9D9C9] rounded-2xl sm:rounded-3xl p-3 sm:p-5 lg:p-6 shadow-2xs">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 items-center">
-            {/* Left Column: Hands at sewing machine + Experience badge */}
+            {/* Left Column: Golden-framed sewing machine photo with built-in 20+ Years Experience badge */}
             <div className="md:col-span-4 flex justify-center">
-              <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#EADAC9]">
+              <div className="w-full max-w-[300px] sm:max-w-[340px]">
                 <Image
-                  src="/assets/about-sewing.jpg"
-                  alt="Pramod Sah Stitching Ladies Garment"
-                  fill
-                  className="object-cover"
+                  src="/assets/about-sewing.webp"
+                  alt="Pramod Sah Stitching Ladies Garment with 20+ Years Experience"
+                  width={1024}
+                  height={609}
+                  sizes="(max-width: 768px) 300px, 340px"
+                  className="w-full h-auto object-contain drop-shadow-sm"
                 />
-                {/* Circular 20+ Years Experience Gold Badge */}
-                <div className="absolute -bottom-2 -right-2 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none drop-shadow-md">
-                  <Image
-                    src="/assets/badge-experience.png"
-                    alt="20+ Years Experience Badge"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
               </div>
             </div>
 
