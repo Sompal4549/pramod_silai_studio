@@ -27,14 +27,14 @@ export const siteConfig = {
   city: "Chapra",
   state: "Bihar",
   pincode: "841301",
-  address: "Chapra, Bihar – 841301",
+  address: "Hathwa market Chhapra Rastogi glass house ke upar Sidhi ke Bagal mein, Chapra, Bihar – 841301",
   geo: {
     latitude: 25.7796,
     longitude: 84.7499,
   },
   hours: "Mon – Sat: 9:00 AM – 8:00 PM",
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=Chapra,+Bihar+841301&t=&z=14&ie=UTF8&iwloc=&output=embed",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.770486266303!2d84.7422552!3d25.778143399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992bb9e240158db%3A0x35b5e4fb364eb7d7!2sRastogi%20Glass%20House!5e0!3m2!1sen!2sin",
   mapsDirectionsUrl: "https://maps.google.com/?q=Chapra,+Bihar",
   socials: {
     whatsapp: "https://wa.me/919939996464",

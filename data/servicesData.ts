@@ -351,6 +351,33 @@ export const allServices: ServiceItem[] = [
     seoDescription:
       "Girls party frocks, festive mini lehengas & comfortable kids wear stitching in Chapra, Bihar by Pramod Ladies Tailor.",
   },
+  {
+    id: "other-services",
+    title: "Other Services",
+    subtitle: "Special Requests Welcome",
+    tagline: "Beyond the List",
+    heroDescription:
+      "Got a unique outfit idea not listed here? From custom blouse alterations to garment repairs and one-off stitching requests, we handle it all.",
+    aboutDescription:
+      "Need something special that isn't on our standard list? Bring your fabric, design photo, or garment to Pramod Ladies Tailor. We take custom orders for any type of ladies' stitching, alterations, or repairs—just share your vision and we'll deliver.",
+    highlights: [
+      "Custom One-Off Stitching Requests",
+      "Garment Repairs & Modifications",
+      "Special Alterations Not Listed Above",
+      "Bring Your Own Fabric & Design",
+    ],
+    collectionTitle: "Our Other Services",
+    image: "/assets/svc-custom.webp",
+    gallery: [
+      { src: "/assets/svc-custom.webp", alt: "Custom Special Stitching Request" },
+      { src: "/assets/svc-alteration.webp", alt: "Garment Repair & Modification Work" },
+      { src: "/assets/svc-kurti.webp", alt: "Special Custom Kurti Stitching" },
+      { src: "/assets/svc-blouse.webp", alt: "Special Designer Blouse Work" },
+    ],
+    icon: "/assets/icon-svc-custom.png",
+    seoDescription:
+      "Custom special stitching, repairs & modifications for any garment in Chapra, Bihar at Pramod Ladies Tailor.",
+  },
 ];
 
 export const featuredServices = allServices.filter((s) => s.featured);
